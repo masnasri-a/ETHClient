@@ -18,7 +18,7 @@ contract Halal{
 
     struct transaction{
         string user_id;
-        bytes data;
+        string data;
     }
 
     mapping (bytes32 => transaction) private mappingTransaction;
@@ -34,6 +34,18 @@ contract Halal{
 
     constructor(){
         owner = msg.sender;
+    }
+
+    function bytes32ToString(bytes32 _bytes32) public pure returns (string memory) {
+        uint8 i = 0;
+        while(i < 32 && _bytes32[i] != 0) {
+            i++;
+        }
+        bytes memory bytesArray = new bytes(i);
+        for (i = 0; i < 32 && _bytes32[i] != 0; i++) {
+            bytesArray[i] = _bytes32[i];
+        }
+        return string(bytesArray);
     }
 
     function account_checker(bytes32 id, string memory umkm_id) private view returns(bool){
@@ -64,10 +76,10 @@ contract Halal{
     function add_transaction(
         string memory transaction_id,
         string memory user_id,
-        bytes memory data
+        string memory data
     ) external returns(bytes32) {
         bytes32 id = keccak256(abi.encodePacked(transaction_id));
-        transaction memory trans = mappingTransaction[id];
+        transaction storage trans = mappingTransaction[id];
         trans.user_id = user_id;
         trans.data = data;
         emit success("success", id);
@@ -81,7 +93,7 @@ contract Halal{
 
     function add_certificate(string memory umkm_id, string memory cert_id, uint expired_at) external returns(bytes32){
         bytes32 id = keccak256(abi.encodePacked(umkm_id));
-        certificate memory cert = mappingCertificate[id];
+        certificate storage cert = mappingCertificate[id];
         cert.umkm_id = umkm_id;
         cert.certificate_id = cert_id;
         cert.created_at = block.timestamp;

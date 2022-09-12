@@ -14,7 +14,7 @@ def load_abi():
 
 def connect_contract():
     web3 = Web3(Web3.HTTPProvider(url_node))
-    contract_address = '0x279aebe9636c6a3cbef0098c668de814fcf6ac0b'
+    contract_address = '0x45aC327bA00Ecc952F8572BD331C3Ea53C46a154'
     web3.eth.defaultAccount = web3.eth.accounts[0]
     abi = load_abi()['abi']
     if contract_address == None:
@@ -74,10 +74,10 @@ def get_transaction(transaction_id):
     except:
         traceback.print_exc()
 
-def add_cert(umkm_id, cert_id, expired_at):
+def add_cert(umkm_id:str, cert_id:str, expired_at:int):
     try:
         web3, client = connect_contract()
-        add_transaction = client.functions.add_transaction(
+        add_transaction = client.functions.add_certificate(
             umkm_id,
             cert_id,
             expired_at
@@ -99,20 +99,26 @@ def get_cert(umkm_id):
 if __name__ == "__main__":
     web3, client = connect_contract()
     
-    adder = add_account("UMKM:06", "newns", "umkm")
-    print(adder)
+    # adder = add_account("UMKM:07", "newns", "umkm")
+    # print(adder)
 
-    get_acc = get_account("UMKM:04")
-    print(get_acc)
+    # get_acc = get_account("UMKM:06")
+    # print(get_acc)
 
     # test_data = {
     #     "name":"nasri",
     #     "role":"umkm"
     # }
-    # data = json.dumps(test_data).encode('utf-8')
+    # data = json.dumps(test_data)
+    
     # add_tx = add_transaction("TX", "UMKM:02", data)
     # print(add_tx)
 
     # get_tx = get_transaction("TX")
     # print(get_tx)
 
+    # set_cert = add_cert("UMKM:02", "masnasri", 1621312312312)
+    # print(set_cert)
+
+    # get_cer = get_cert("UMKM:02")
+    # print(get_cer)
