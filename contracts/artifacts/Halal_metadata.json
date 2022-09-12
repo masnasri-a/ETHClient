@@ -1,0 +1,265 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "status",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "message",
+						"type": "bytes32"
+					}
+				],
+				"name": "success",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "account_id",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "role",
+						"type": "string"
+					}
+				],
+				"name": "add_account",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "umkm_id",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "cert_id",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "expired_at",
+						"type": "uint256"
+					}
+				],
+				"name": "add_certificate",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "transaction_id",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "user_id",
+						"type": "string"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "add_transaction",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "account_id",
+						"type": "string"
+					}
+				],
+				"name": "get_account",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "account_id",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "role",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "created_at",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct Halal.accountData",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "umkm_id",
+						"type": "string"
+					}
+				],
+				"name": "get_certificate",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "umkm_id",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "certificate_id",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "created_at",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "expired_at",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct Halal.certificate",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "transaction_id",
+						"type": "string"
+					}
+				],
+				"name": "get_transaction",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "user_id",
+								"type": "string"
+							},
+							{
+								"internalType": "bytes",
+								"name": "data",
+								"type": "bytes"
+							}
+						],
+						"internalType": "struct Halal.transaction",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Halal.sol": "Halal"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Halal.sol": {
+			"keccak256": "0x11ba1dd2510cc50c53be83cfc79d30478b81ac268591a90e8d4dbf4cd6106eaa",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://13ed0d1db333c465c4f1dce30498c1634429110883f9feefc4c3e39b5a932907",
+				"dweb:/ipfs/QmR52XMHEqoUotcfw3uXkuyzNohDUh8B95SCgp9Dw5teXN"
+			]
+		}
+	},
+	"version": 1
+}
